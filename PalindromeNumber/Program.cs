@@ -6,6 +6,42 @@ namespace PalindromeNumber
     {
         static void Main(string[] args)
         {
+            bool prikaziMenu = true;
+
+            while (prikaziMenu)
+            {
+                prikaziMenu = Menu();
+            }
+        }
+
+        private static bool Menu()
+        {
+            Console.Clear();
+            Console.WriteLine("Izberi možnost:");
+            Console.WriteLine("1. Izračun palindromskega števila");
+            Console.WriteLine("2. Kaj je palindromsko število?");
+            Console.WriteLine("3. Izhod");
+            Console.Write("\r\nIzberi možnost: ");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Izracun();
+                    break;
+                case "2":
+                    PalindromskoStevilo();
+                    break;
+                case "3":
+                    System.Environment.Exit(0);
+                    break;
+                default:
+                    return true;
+            }
+            return false;
+        }
+
+        private static void Izracun()
+        {
             int originalnoStevilo, zacasnoStevilo, ostanek, obrnjenoStevilo = 0;
 
             Console.Write("Vnesi število: ");
@@ -44,12 +80,19 @@ namespace PalindromeNumber
             if (zacasnoStevilo == obrnjenoStevilo)
             {
                 Console.WriteLine("Vnešeno število JE palindromsko število!");
-            } else
+            }
+            else
             {
                 Console.WriteLine("Vnešeno število NI palindromsko število");
             }
             Console.WriteLine("=====================================");
             Console.ReadLine();
+        }
+
+        private static string PalindromskoStevilo()
+        {
+            Console.WriteLine("Palindromsko število je število, ki ostane enako, ko obrnemo njegove številke. Zapis posameznih števil je enak tako z leve kot z desne strani. Primer palindromskega števila: 1001, 16461,...");
+            return Console.ReadLine();
         }
     }
 }
